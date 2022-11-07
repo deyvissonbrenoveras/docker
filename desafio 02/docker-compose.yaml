@@ -4,6 +4,7 @@ services:
   app:
     container_name: app
     build: ./app
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s docker-entrypoint.sh
     volumes:
       - ./app/:/usr/src/app
     tty: true

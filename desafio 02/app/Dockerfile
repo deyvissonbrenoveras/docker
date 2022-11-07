@@ -7,4 +7,6 @@ COPY package-lock.json package-lock.json
 
 RUN npm install
 
+EXPOSE 3000
+
 CMD [ "bash" ]

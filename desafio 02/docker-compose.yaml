@@ -3,14 +3,11 @@ version: "3"
 services:
   app:
     container_name: app
-    image: node:16.13.0
     build: ./app
     volumes:
       - ./app/:/usr/src/app
     tty: true
     command: npm start
-    ports:
-      - "3000:3000"
     networks:
       - app-network
     restart: "always"
@@ -28,6 +25,15 @@ services:
     environment:
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=password
+    networks:
+      - app-network
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    restart: always
+    tty: true
+    ports:
+      - "8080:8080"
     networks:
       - app-network
 

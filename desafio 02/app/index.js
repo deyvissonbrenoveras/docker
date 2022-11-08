@@ -19,9 +19,8 @@ function getPeople(callback) {
   connection.query(`SELECT * FROM people`, callback);
 }
 
-app.post("/", express.json(), async (req, res) => {
-  console.log(req.body.personName);
-  savePerson(req.body.personName);
+app.get("/", async (req, res) => {
+  savePerson("Breno");
   getPeople(function (err, result, fields) {
     if (err) return res.send(err);
     let itemsList = "";

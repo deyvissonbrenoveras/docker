@@ -35,7 +35,7 @@ services:
     restart: always
     tty: true
     ports:
-      - "8080:8080"
+      - "8080:80"
     networks:
       - app-network
 
